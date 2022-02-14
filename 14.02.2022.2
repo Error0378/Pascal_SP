@@ -1,0 +1,41 @@
+var
+a,b,c:string;
+Procedure Rivno;
+var
+la,lb:byte;
+begin
+la:=length(a);
+lb:=length(b);
+while la<>lb do
+begin
+if la>lb then b:='0'+b
+else a:='0'+a;
+la:=length(a); lb:=length(b);
+end;
+end;
+Procedure Sum;
+var
+p,i,ai,bi,ci:integer;
+cod:integer;
+s:string;
+begin
+p:=0; i:=length(a); c:='';
+while i>=0 do
+begin
+Val(a[i],ai,cod); Val(b[i],bi,cod);
+ci:=ai+bi+p; p:=ci div 10; ci:=ci mod 10;
+Str(ci,s); c:=s+c;
+Dec(i);
+end;
+end;
+begin
+repeat
+readln(a);
+readln(b);
+Rivno; Sum;
+writeln(a:80);
+writeln('+');
+writeln(b:80);
+writeln(c:80);
+until b='';
+end.
