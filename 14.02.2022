@@ -1,0 +1,44 @@
+var a,b,sum:array[1..100] of integer;
+i,n,m,max,x,k:integer;
+stra,strb,rez,r:string;
+begin
+readln(stra);
+readln(strb);
+n:=length(stra);
+m:=length(strb);
+While n>m do
+begin
+strb:='0'+strb; m:=length(strb);
+end;
+While m>n do
+begin
+stra:='0'+stra; n:=length(stra);
+end;
+for i:= 1 to n do
+begin
+val(stra[i],x,k);
+a[i]:=x;
+end;
+for i:=1 to n do
+begin
+val(strb[i],x,k);
+b[i]:=x;
+end;
+for i:=1 to n do
+sum[i]:=a[i]-b[i];
+for i:=n downto 2 do
+if sum[i]<0 then
+begin
+sum[i-1]:=sum[i-1]-1;
+sum[i]:=(10+sum[i]);
+end;
+writeln;
+rez:='';
+for i:=1 to n do
+begin
+str(sum[i],r);
+rez:=rez+r;
+end;
+writeln(stra:80);writeln(strb:80);
+writeln(rez:80);
+end.
